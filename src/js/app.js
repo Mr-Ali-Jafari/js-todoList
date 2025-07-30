@@ -63,3 +63,26 @@ function randomColor() {
       return colors[Math.floor(Math.random() * colors.length)];
     }
 
+function createCircle() {
+      const container = document.getElementById('bubble-section');
+      const circle = document.createElement('div');
+      const size = Math.random() * 2 + 1; // 1vw to 3vw
+      const left = Math.random() * 100;
+      const duration = Math.random() * 5 + 4; // 4s to 9s
+
+      circle.classList.add('circle');
+      circle.style.width = size + 'vw';
+      circle.style.height = size + 'vw';
+      circle.style.left = left + '%';
+      circle.style.backgroundColor = randomColor();
+      circle.style.animationDuration = duration + 's';
+
+      container.appendChild(circle);
+
+      setTimeout(() => {
+        circle.remove();
+      }, duration * 1000);
+}
+
+    // Generate new circle every 300ms
+setInterval(createCircle, 300);
